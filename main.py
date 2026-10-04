@@ -47,16 +47,21 @@ def send_video(chat_id, video_path, caption=""):
         send_message(chat_id, f"❌ Error: {e}")
 
 def call_gemini(prompt):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
-    headers = {"Content-Type": "application/json"}
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {GEMINI_API_KEY}"
+    }
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
     try:
         response = requests.post(url, json=payload, headers=headers, timeout=30)
         if response.status_code == 200:
             return response.json()["candidates"][0]["content"]["parts"][0]["text"]
-        return f"❌ Gemini API Error: {response.status_code}"
+        return f"❌ Gemini API Error: {response.status_code} - {response.text}"
     except Exception as e:
         return f"❌ Exception: {e}"
+
+
 
 def make_short_video(topic, chat_id):
     send_message(chat_id, "⏳ **1/3:** ਪੰਜਾਬੀ ਸਕ੍ਰਿਪਟ ਤਿਆਰ ਹੋ ਰਹੀ ਹੈ...")
