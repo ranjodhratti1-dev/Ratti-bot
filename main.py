@@ -25,7 +25,7 @@ threading.Thread(target=run_health_server, daemon=True).start()
 
 # --- API Keys ---
 TELEGRAM_BOT_TOKEN = "8937029414:AAFiIV32-Wz9e2j-duP3FncUo3zWrTbBHoU"
-GEMINI_API_KEY = "AQ.Ab8RN6Ke51fqNfkgK9qOgD-cAajgVkj0_uNxC6zVjbMCpAHOJQ"
+GEMINI_API_KEY = "AQ.Ab8RN6Kmfb7BPUaHDTZZaDquMPYSfYgIyjXcgyarKQ_-bom9Ew"
 TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
 def send_message(chat_id, text):
